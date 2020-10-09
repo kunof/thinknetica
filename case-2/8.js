@@ -4,26 +4,26 @@
 3. При задании значения свойства dateOfBirth должно так же устанавливаться свойство age в зависимости от разницы года рождения и текущего года */
 
 const human = Object.create({
-    fullName: {
-        set: function(fullName) {
-            this.firstName = fullName.split(' ')[0];
-            this.lastName =  fullName.split(' ')[1]
-        },
-        get: function() {
-            return `${this.firstName} ${this.lastName}`
-        }
+    set fullName(fullName) {
+        this.firstName = fullName.split(' ')[0];
+        this.lastName = fullName.split(' ')[1];
     },
-    setDateOfBirth: function(date) {
-        /* Не очень понимаю как при задании dateOfBirth должно выполняться что-то ещё
-         поэтому создал отдельный метод для установки даты рождения и возраста.
-         А создавать сеттер и внутри него опять вызывать присвоение значения - это как то непонятно.
-         Поясните этот момент, пожалуйста*/
-        this.dateOfBirth = new Date(date);
-        this.age = new Date().getFullYear() - this.dateOfBirth.getFullYear();
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`
+    },
+    set dateOfBirth(date) {
+        this.date = date;
+        this.age = new Date().getFullYear() - new Date(this.date).getFullYear();
+    },
+    get dateOfBirth() {
+        return this.date;
     }
 });
 
-human.fullName = 'Pavel Kunof';
-human.setDateOfBirth('1996, 5, 11');
+
+ human.fullName = 'Pavel Kunof';
+ human.dateOfBirth = '1996, 5, 11';
 
 console.log(human);
+console.log( human.fullName);
+console.log( human.dateOfBirth);

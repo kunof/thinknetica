@@ -5,8 +5,6 @@ sortDesc(numbers) // [30, 20, 10, 0, -10, -20] */
 
 const numbers = [-20, -10, 0, 10, 20, 30];
 
-const sortDesc = function(array) {
-    return array.sort().reverse()
-};
+const sortDesc = (array) => array.sort((a, b) => b - a);
 
 console.log(sortDesc(numbers));

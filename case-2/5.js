@@ -28,32 +28,20 @@ const employees = [
     }
 ];
 
-const getFullNames = function(objectsList) {
-    return objectsList.map((item) =>
-        `${item.firstName } ${item.lastName}`)
-        .join(', ');
-};
+const getFullNames = (objectsList) => objectsList.map((item) => `${item.firstName } ${item.lastName}`).join(', ');
 
 // 1. Узнать среднюю зарплату сотрудников
-const getAverageSalary = function(staff) {
-    return staff.reduce((acc, item) => {
-            return acc + item.salary
-        }, 0) / staff.length
-};
+const getAverageSalary = (staff) => staff.reduce((acc, item) => acc + item.salary, 0) / staff.length;
 
 console.log(`1. Средняя зарплата сотрудников: ${getAverageSalary(employees)}`);
 
 // 2. Отсортировать сотрудников по зарплате
-const sortBySalary = function (staff) {
-    return staff.sort((a , b) => a.salary > b.salary ? 1 : -1)
-};
+const sortBySalary = (staff) =>staff.sort((a , b) => a.salary - b.salary);
 
 console.log(`2. Сортировка сотрудников по зарплате: ${getFullNames(sortBySalary(employees))}`);
 
 // 3. Получить список сотрудников с зарплатой >4500 и возрастом > 25 лет
-const filter = function (staff) {
-    return staff.filter((item) => {return item.salary > 4500 && item.age > 25})
-};
+const filter = (staff) => staff.filter((item) => {return item.salary > 4500 && item.age > 25});
 
 console.log(`3. Сотрудники с зарплатой >4500 и возрастом > 25 лет: 
 ${getFullNames(filter(employees))}`);
