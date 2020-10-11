@@ -1,17 +1,16 @@
 const cache = function() {
-    const cacheStorage = [];
+    const cacheStorage = {};
 
     return function (first, second) {
-        const obj = {f: first, s: second};
-        const cacheResult = cacheStorage.find((item) => item.f === obj.f && item.s === obj.s);
+        const cacheResult = cacheStorage[`${first}&${second}`];
 
-        if (cacheResult) {
-            return {value: cacheResult.value, fromCache: true}
+        if (cacheResult) {  
+            return {value: cacheResult, fromCache: true}
         } else {
-            obj.value = first ** second;
-            cacheStorage.push(obj);
+            const value = first ** second;
+            cacheStorage[`${first}&${second}`] = value;
 
-            return {value: obj.value, fromCache: false}
+            return {value: value, fromCache: false}
         }
     }
 };
