@@ -5,41 +5,28 @@
 Человек → Сотрудник → Нынешний сотрудник/ бывший сотрудник
 */
 
-const john = {
+const Men = {
     name: "John",
     lastName: "Smith",
-    position: "Senior engineer",
-    startDate: "10.10.1990",
-    endDate: "10.10.2000",
-    baseSalary: "10000",
-    salaryCurrency: "$",
     location: "Russia",
-    department: "IT",
     phoneNumber: "+1234567890",
-    eat: function() {},
-    sleep: function() {},
-    callFriend: function() {},
-    writeReport: function() {},
-    organizeMeeting: function () {},
-    retire: function () {},
-    startVacation: function () {}
+    eat: function () {},
+    sleep: function () {},
+    callFriend: function () {}
 };
 
-const Men = function(props) {
-    this.name = props.name;
-    this.lastName = props.lastName;
-};
+const Worker = Object.create(Men);
+Worker.position = "Senior engineer";
+Worker.startDate = "10.10.1990";
+Worker.baseSalary = "10000";
+Worker.salaryCurrency = "$";
+Worker.department = "IT";
 
-Men.__proto__.eat = function () {};
-Men.__proto__.sleep = function () {};
-Men.__proto__.callFriend = function () {};
+const CurrentEmployee = Object.create(Worker);
+CurrentEmployee.startVacation = function () {};
+CurrentEmployee.writeReport = function () {};
+CurrentEmployee.organizeMeeting = function () {};
+CurrentEmployee.retire = function () {};
 
-const Worker = function() {};
-
-Worker.__proto__ = Men(john);
-Worker.__proto__.writeReport = function () {};
-Worker.__proto__.organizeMeeting = function () {};
-Worker.__proto__.retire = function () {};
-Worker.__proto__.startVacation = function () {};
-
-const frontEnder = new Worker(john);
+const FormerEmployee = Object.create(Worker);
+FormerEmployee.endDate = "10.10.2000";
