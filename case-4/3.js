@@ -4,29 +4,59 @@
 Есть следующее расширение объектов:
 Человек → Сотрудник → Нынешний сотрудник/ бывший сотрудник
 */
+class Men {
+    constructor(data) {
+        this.name = data.name;
+        this.lastName = data.lastName;
+        this.location = data.location;
+        this.phoneNumber = data.phoneNumber;
+    }
 
-const Men = {
+    eat() {};
+    sleep() {};
+    callFriend() {};
+}
+
+class Worker extends Men {
+    constructor(data) {
+        super(data);
+        this.position = data.position;
+        this.startDate = data.startDate;
+        this.baseSalary = data.baseSalary;
+        this.salaryCurrency = data.salaryCurrency;
+        this.department = data.department;
+    }
+}
+
+class CurrentEmployee extends Worker {
+    constructor(data) {
+        super(data);
+    }
+
+    startVacation() {};
+    writeReport() {};
+    organizeMeeting() {};
+    retire() {};
+}
+
+class FormerEmployee extends Worker {
+    constructor(data) {
+        super(data);
+        this.endDate = data.endDate;
+    }
+}
+
+const john = {
     name: "John",
     lastName: "Smith",
+    position: "Senior engineer",
+    startDate: "10.10.1990",
+    endDate: "10.10.2000",
+    baseSalary: "10000",
+    salaryCurrency: "$",
     location: "Russia",
+    department: "IT",
     phoneNumber: "+1234567890",
-    eat: function () {},
-    sleep: function () {},
-    callFriend: function () {}
 };
 
-const Worker = Object.create(Men);
-Worker.position = "Senior engineer";
-Worker.startDate = "10.10.1990";
-Worker.baseSalary = "10000";
-Worker.salaryCurrency = "$";
-Worker.department = "IT";
-
-const CurrentEmployee = Object.create(Worker);
-CurrentEmployee.startVacation = function () {};
-CurrentEmployee.writeReport = function () {};
-CurrentEmployee.organizeMeeting = function () {};
-CurrentEmployee.retire = function () {};
-
-const FormerEmployee = Object.create(Worker);
-FormerEmployee.endDate = "10.10.2000";
+const instance = new CurrentEmployee(john);
