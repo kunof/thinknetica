@@ -89,16 +89,16 @@ class EngineShipyard extends Shipyard {
 const sailShipyard = new SailShipyard();
 const engineShipyard = new EngineShipyard();
 
-let sailShip = sailShipyard.build(sailShipOptions);
-let engineShip = engineShipyard.build(engineShipOptions);
+const sailShip = sailShipyard.build(sailShipOptions);
+const engineShip = engineShipyard.build(engineShipOptions);
 
 // Мне не нравится что приходится в данном случае использовать присвоение. Но не наю как тут можно иначе
 // Такими темпами можно и без корабля остаться если не знаешь что за механики в этой верфи ;)
-engineShip = engineShipyard.repairs(engineShip); // Ремонтируем в подходящей верфи
-sailShip = engineShipyard.repairs(sailShip); // Ремонтируем в неподходящей верфи, получаем корабль в том же виде что и отдали
+const resultRepairsEngineShip = engineShipyard.repairs(engineShip); // Ремонтируем в подходящей верфи
+const resultRepairsSailShip = engineShipyard.repairs(sailShip); // Ремонтируем в неподходящей верфи, получаем корабль в том же виде что и отдали
 
 //Перекрашивание в любой верфи
-sailShip = engineShipyard.repaint(sailShip, 'red');
+const resultRepaintSailShip = engineShipyard.repaint(sailShip, 'red');
 
 //Обмен корабля на новый
-engineShip = engineShipyard.exchange(engineShip, newEngineShipOptions);
+const  resultExchangeEngineShip = engineShipyard.exchange(engineShip, newEngineShipOptions);
